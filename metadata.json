@@ -1,0 +1,6 @@
+{
+  "name": "Сабзак — Англисӣ барои Тоҷикон (English from Tajik)",
+  "description": "Барномаи бозикунонидашудаи омӯзиши забони англисӣ барои тоҷикзабонон: дарсҳои интерактивии рӯзмарра, луғат, грамматика, пайгирии пешрафт ва кор дар ҳолати офлайн.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

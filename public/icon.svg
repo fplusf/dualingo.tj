@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#58CC02"/>
+      <stop offset="100%" stop-color="#46A302"/>
+    </linearGradient>
+    <linearGradient id="bellyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#79D800"/>
+      <stop offset="100%" stop-color="#58CC02"/>
+    </linearGradient>
+    <linearGradient id="beakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFC800"/>
+      <stop offset="100%" stop-color="#FF9600"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#2B6B00" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle -->
+  <rect x="24" y="24" width="464" height="464" rx="110" fill="url(#bgGrad)" filter="url(#shadow)" />
+
+  <!-- Inner Owl Body -->
+  <!-- Left Wing -->
+  <ellipse cx="140" cy="290" rx="45" ry="75" fill="#46A302" transform="rotate(-15 140 290)"/>
+  <!-- Right Wing -->
+  <ellipse cx="372" cy="290" rx="45" ry="75" fill="#46A302" transform="rotate(15 372 290)"/>
+
+  <!-- Belly -->
+  <ellipse cx="256" cy="315" rx="105" ry="115" fill="url(#bellyGrad)" />
+  <path d="M210 330 Q256 355 302 330" stroke="#46A302" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M225 365 Q256 385 287 365" stroke="#46A302" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Big Eyes Background (White) -->
+  <ellipse cx="195" cy="210" rx="58" ry="64" fill="#FFFFFF"/>
+  <ellipse cx="317" cy="210" rx="58" ry="64" fill="#FFFFFF"/>
+
+  <!-- Eye Irises (Duolingo playful black pupils with shine) -->
+  <ellipse cx="205" cy="212" rx="34" ry="40" fill="#2B3942"/>
+  <ellipse cx="307" cy="212" rx="34" ry="40" fill="#2B3942"/>
+
+  <!-- Eye Highlights -->
+  <circle cx="218" cy="198" r="13" fill="#FFFFFF"/>
+  <circle cx="200" cy="226" r="6" fill="#FFFFFF"/>
+  <circle cx="320" cy="198" r="13" fill="#FFFFFF"/>
+  <circle cx="302" cy="226" r="6" fill="#FFFFFF"/>
+
+  <!-- Beak -->
+  <polygon points="256,232 232,275 280,275" fill="url(#beakGrad)"/>
+
+  <!-- Cute Tajik flag badge ribbon on chest -->
+  <g transform="translate(230, 412)">
+    <rect x="-30" y="0" width="86" height="24" rx="6" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="-28" y="2" width="82" height="6" fill="#CC0000"/>
+    <rect x="-28" y="8" width="82" height="8" fill="#FFFFFF"/>
+    <rect x="-28" y="16" width="82" height="6" fill="#009900"/>
+    <text x="13" y="14" font-family="sans-serif" font-size="7" font-weight="bold" fill="#D97706" text-anchor="middle">👑</text>
+  </g>
+
+  <!-- Feet -->
+  <ellipse cx="205" cy="438" rx="22" ry="14" fill="#FF9600"/>
+  <ellipse cx="307" cy="438" rx="22" ry="14" fill="#FF9600"/>
+</svg>

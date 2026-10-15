@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* Duolingo tactile 3D buttons */
+  .duo-btn-green {
+    background-color: #58CC02;
+    border-bottom: 4px solid #46A302;
+    color: white;
+    transition: all 0.1s ease-in-out;
+  }
+  .duo-btn-green:hover:not(:disabled) {
+    background-color: #61E002;
+  }
+  .duo-btn-green:active:not(:disabled) {
+    transform: translateY(3px);
+    border-bottom-width: 1px;
+    margin-bottom: 3px;
+  }
+
+  .duo-btn-blue {
+    background-color: #1CB0F6;
+    border-bottom: 4px solid #1899D6;
+    color: white;
+    transition: all 0.1s ease-in-out;
+  }
+  .duo-btn-blue:hover:not(:disabled) {
+    background-color: #24BCFF;
+  }
+  .duo-btn-blue:active:not(:disabled) {
+    transform: translateY(3px);
+    border-bottom-width: 1px;
+    margin-bottom: 3px;
+  }
+
+  .duo-btn-white {
+    background-color: #FFFFFF;
+    border: 2px solid #E5E7EB;
+    border-bottom: 4px solid #D1D5DB;
+    color: #4B5563;
+    transition: all 0.1s ease-in-out;
+  }
+  .duo-btn-white:hover:not(:disabled) {
+    background-color: #F9FAFB;
+  }
+  .duo-btn-white:active:not(:disabled) {
+    transform: translateY(2px);
+    border-bottom-width: 2px;
+  }
+
+  .duo-card {
+    background-color: white;
+    border: 2px solid #E5E7EB;
+    border-bottom: 4px solid #E5E7EB;
+    border-radius: 1rem;
+  }
+
+  .duo-tile {
+    border: 2px solid #E5E7EB;
+    border-bottom: 4px solid #D1D5DB;
+    transition: all 0.12s ease;
+  }
+  .duo-tile:hover {
+    border-color: #93C5FD;
+    background-color: #F0F9FF;
+  }
+  .duo-tile.selected {
+    border-color: #3B82F6;
+    background-color: #EFF6FF;
+    border-bottom: 2px solid #2563EB;
+    transform: translateY(2px);
+  }
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 2.5s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}

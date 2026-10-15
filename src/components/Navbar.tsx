@@ -38,12 +38,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           }}
           className="flex items-center gap-2 cursor-pointer text-left shrink-0 active:scale-95 transition"
         >
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#58CC02] flex items-center justify-center shadow-xs overflow-hidden">
-            <span className="text-lg sm:text-xl">🦉</span>
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#58CC02] flex items-center justify-center shadow-xs overflow-hidden border border-emerald-400/30">
+            <img
+              src="./dulingo-logo.png"
+              alt="Dulingo"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="hidden min-[420px]:block">
             <h1 className="text-base sm:text-lg font-black tracking-tight text-[#58CC02] leading-none">
-              САБЗАК
+              DULINGO
             </h1>
             <span className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
               Англисӣ

@@ -15,9 +15,9 @@ export default defineConfig(() => {
         includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icon.svg'],
         manifest: {
           id: './',
-          name: 'Сабзак: Англисӣ барои Тоҷикон',
-          short_name: 'Сабзак',
-          description: 'Омӯзиши бозикунонидашудаи забони англисӣ барои тоҷикзабонон бо тарзи Duolingo ва дастгирии офлайн.',
+          name: 'Dulingo: Англисӣ барои Тоҷикон',
+          short_name: 'Dulingo',
+          description: 'Омӯзиши бозикунонидашудаи забони англисӣ барои тоҷикзабонон бо барномаи Dulingo ва дастгирии офлайн.',
           theme_color: '#58CC02',
           background_color: '#FFFFFF',
           display: 'standalone',

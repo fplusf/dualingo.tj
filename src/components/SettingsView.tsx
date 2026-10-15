@@ -66,7 +66,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ stats, onUpdateStats
                   <span>Насби барнома (PWA)</span>
                 </div>
                 <h3 className="text-base sm:text-lg font-black leading-snug">
-                  Сабзакро ба телефони худ насб кунед!
+                  Dulingo-ро ба телефони худ насб кунед!
                 </h3>
                 <p className="text-xs text-blue-100 font-medium mt-1 leading-relaxed">
                   Истифодаи сареъ аз экрани асосӣ, бидуни сатри браузер ва кор дар ҳолати офлайн.

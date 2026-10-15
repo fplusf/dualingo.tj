@@ -10,7 +10,7 @@ registerSW({
     // Optional: auto reload on SW update
   },
   onOfflineReady() {
-    console.log('Сабзак омода барои истифодаи 100% офлайн мебошад');
+    console.log('Dulingo омода барои истифодаи 100% офлайн мебошад');
   },
 });
 

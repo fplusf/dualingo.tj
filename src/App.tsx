@@ -116,7 +116,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F7F7F7] flex flex-col pb-24 md:pb-6">
+    <div className="min-h-screen bg-[#F7F7F7] flex flex-col pb-28 md:pb-6">
       
       {/* Top Navbar */}
       <Navbar
@@ -215,7 +215,7 @@ export default function App() {
       </div>
 
       {/* Mobile Bottom Navigation Bar (Responsive, perfect fit on all phone screens) */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-xl px-1.5 pt-1.5 pb-[max(0.4rem,env(safe-area-inset-bottom))]">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-xl px-1.5 pt-1.5 pb-[max(1.25rem,calc(env(safe-area-inset-bottom)+0.5rem))]">
         <div className="grid grid-cols-6 max-w-md mx-auto items-center">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -245,7 +245,7 @@ export default function App() {
 
       {/* Non-intrusive Offline Toast Banner */}
       {!isOnline && (
-        <div className="fixed bottom-20 md:bottom-4 left-4 z-50 flex items-center gap-2 rounded-2xl bg-amber-600 px-3.5 py-2 text-xs font-bold text-white shadow-xl animate-gentle-bounce">
+        <div className="fixed bottom-24 md:bottom-4 left-4 z-50 flex items-center gap-2 rounded-2xl bg-amber-600 px-3.5 py-2 text-xs font-bold text-white shadow-xl animate-gentle-bounce">
           <WifiOff className="w-4 h-4 shrink-0" />
           <span>Шумо дар ҳолати офлайнед — Дарсҳо кор мекунанд!</span>
         </div>

@@ -146,6 +146,37 @@ export const HeartsModal: React.FC<ModalProps> = ({ stats, onClose, onUpdateStat
               <span>💎 50</span>
             </div>
           </button>
+
+          {/* Practice to earn 1 heart (Duolingo practice feature) */}
+          <button
+            onClick={() => {
+              soundManager.playFanfare();
+              try {
+                confetti({ particleCount: 50, spread: 40, origin: { y: 0.6 } });
+              } catch {}
+              const updated = {
+                ...stats,
+                hearts: Math.min(stats.maxHearts, stats.hearts + 1),
+                xp: stats.xp + 5,
+              };
+              onUpdateStats(updated);
+              saveUserStats(updated);
+            }}
+            disabled={stats.hearts === stats.maxHearts}
+            className={`w-full p-3.5 rounded-2xl border-2 flex items-center justify-between transition ${
+              stats.hearts < stats.maxHearts
+                ? 'border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-900 active:scale-95'
+                : 'border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed'
+            }`}
+          >
+            <div className="text-left">
+              <span className="font-bold text-xs block">Машқи зуд барои барқарор кардан</span>
+              <span className="text-[11px] text-emerald-700">Бепул: +1 ❤️ ва +5 XP</span>
+            </div>
+            <div className="flex items-center gap-1 font-black text-xs text-emerald-700 bg-white px-2.5 py-1.5 rounded-xl border border-emerald-200">
+              <span>+1 ❤️</span>
+            </div>
+          </button>
         </div>
 
         <button

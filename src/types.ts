@@ -26,12 +26,14 @@ export interface Question {
 
 export interface Lesson {
   id: string;
+  unitId: string;
   titleTj: string; // e.g. "Салом ва аҳволпурсӣ"
   titleEn: string; // "Greetings & Introductions"
   descriptionTj: string;
-  xpReward: number;
-  gemReward: number;
+  xpReward: number; // Duolingo standard: 15 XP
+  gemReward: number; // Duolingo standard: 3-5 gems
   iconName: string; // Lucide icon identifier
+  taughtWordIds?: string[]; // IDs of vocabulary words taught in this lesson
   grammarTip?: {
     title: string;
     content: string;
@@ -61,7 +63,9 @@ export interface UserStats {
   streakDates: string[]; // List of YYYY-MM-DD
   hasStreakFreeze: boolean;
   completedLessonIds: string[];
-  savedWordIds: string[];
+  lessonStars: Record<string, number>; // lessonId -> star level 1..3
+  savedWordIds: string[]; // Bookmarked words
+  masteredWordIds: string[]; // Words learned in completed lessons
   currentLeague: 'Бронза' | 'Нуқра' | 'Тилло' | 'Ёқут' | 'Алмос';
   soundEnabled: boolean;
   speechRate: number; // 0.8 or 1.0
@@ -110,6 +114,21 @@ export interface Quest {
   rewardXp: number;
   isCompleted: boolean;
   isClaimed: boolean;
+}
+
+export interface DailyChallenge {
+  id: string;
+  titleTj: string;
+  descriptionTj: string;
+  type: 'consecutive_lessons' | 'xp_rush' | 'perfect_lessons' | 'vocab_mastery';
+  target: number;
+  current: number;
+  rewardGems: number;
+  rewardXp: number;
+  isCompleted: boolean;
+  isClaimed: boolean;
+  date: string; // YYYY-MM-DD
+  badgeIcon: string;
 }
 
 export interface LeaderboardUser {

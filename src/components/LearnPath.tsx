@@ -159,9 +159,9 @@ export const LearnPath: React.FC<LearnPathProps> = ({
                             <div className="flex flex-col items-center">
                               <Check className="w-7 h-7 sm:w-8 sm:h-8 stroke-[3.5]" />
                               <div className="flex gap-0.5 -mt-0.5">
-                                <Star className="w-2.5 h-2.5 fill-white text-white" />
-                                <Star className="w-2.5 h-2.5 fill-white text-white" />
-                                <Star className="w-2.5 h-2.5 fill-white text-white" />
+                                {[...Array(Math.min(3, stats.lessonStars?.[lesson.id] || 1))].map((_, starIdx) => (
+                                  <Star key={starIdx} className="w-2.5 h-2.5 fill-white text-white" />
+                                ))}
                               </div>
                             </div>
                           ) : isUnlocked ? (

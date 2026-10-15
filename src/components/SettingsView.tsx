@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Volume2, Gauge, HardDrive, WifiOff, Trash2, Check, User, Sparkles } from 'lucide-react';
+import { Volume2, Gauge, HardDrive, WifiOff, Trash2, Check, User, Sparkles, Download, Smartphone } from 'lucide-react';
 import { UserStats } from '../types';
 import { saveUserStats } from '../utils/storage';
 import { soundManager } from '../utils/audio';
+import { usePWAInstall } from '../hooks/usePWAInstall';
 
 interface SettingsViewProps {
   stats: UserStats;
@@ -12,6 +13,8 @@ interface SettingsViewProps {
 export const SettingsView: React.FC<SettingsViewProps> = ({ stats, onUpdateStats }) => {
   const [nameInput, setNameInput] = useState(stats.userName);
   const [savedNameSuccess, setSavedNameSuccess] = useState(false);
+  const { isInstallable, isInstalled, isIOS, install } = usePWAInstall();
+  const [showIOSModal, setShowIOSModal] = useState(false);
 
   const handleSaveName = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,20 +42,66 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ stats, onUpdateStats
   };
 
   return (
-    <div className="max-w-xl mx-auto py-6 px-4">
+    <div className="max-w-xl mx-auto py-5 sm:py-6 px-3 sm:px-4 pb-24">
       {/* Header */}
       <div className="mb-6">
-        <h2 className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
+        <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
           <span>⚙️</span>
           <span>Танзимот ва Профил</span>
         </h2>
-        <p className="text-sm text-gray-500 font-medium mt-1">
+        <p className="text-xs sm:text-sm text-gray-500 font-medium mt-0.5">
           Мутобиқсозии барнома ва идораи пешрафти шахсӣ
         </p>
       </div>
 
-      <div className="space-y-5">
+      <div className="space-y-4 sm:space-y-5">
         
+        {/* PWA In-App Install Card */}
+        {!isInstalled && (
+          <div className="duo-card p-5 bg-linear-to-r from-blue-500 to-indigo-600 text-white border-blue-600 shadow-md">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-[11px] font-bold uppercase tracking-wider mb-1">
+                  <Smartphone className="w-3.5 h-3.5" />
+                  <span>Насби барнома (PWA)</span>
+                </div>
+                <h3 className="text-base sm:text-lg font-black leading-snug">
+                  Сабзакро ба телефони худ насб кунед!
+                </h3>
+                <p className="text-xs text-blue-100 font-medium mt-1 leading-relaxed">
+                  Истифодаи сареъ аз экрани асосӣ, бидуни сатри браузер ва кор дар ҳолати офлайн.
+                </p>
+              </div>
+              <div className="text-3xl shrink-0">📱</div>
+            </div>
+
+            <div className="mt-4">
+              {isInstallable && (
+                <button
+                  onClick={() => {
+                    soundManager.playClick();
+                    install();
+                  }}
+                  className="w-full py-3 px-4 rounded-xl bg-white hover:bg-blue-50 text-blue-700 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition active:scale-95"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Ҳозир насб кардан</span>
+                </button>
+              )}
+
+              {isIOS && (
+                <button
+                  onClick={() => setShowIOSModal(true)}
+                  className="w-full py-3 px-4 rounded-xl bg-white hover:bg-blue-50 text-blue-700 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition active:scale-95"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Дастури насб барои iOS / iPhone</span>
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Profile Card */}
         <div className="duo-card p-5 bg-white">
           <h3 className="text-xs font-black uppercase text-gray-400 tracking-wider mb-3">
@@ -141,8 +190,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ stats, onUpdateStats
               <span className="text-xl font-black text-orange-500">{stats.streak} рӯз</span>
             </div>
             <div className="p-3 bg-gray-50 rounded-xl">
-              <span className="text-xs text-gray-500 font-bold block">Калимаҳои мунтахаб</span>
-              <span className="text-xl font-black text-blue-600">{stats.savedWordIds.length}</span>
+              <span className="text-xs text-gray-500 font-bold block">Калимаҳои омӯхта</span>
+              <span className="text-xl font-black text-blue-600">{(stats.masteredWordIds || []).length}</span>
             </div>
           </div>
         </div>
@@ -159,6 +208,25 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ stats, onUpdateStats
         </div>
 
       </div>
+
+      {/* iOS Modal */}
+      {showIOSModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl">
+            <h3 className="text-lg font-black text-gray-900">Насб дар iPhone / iPad</h3>
+            <p className="mt-2.5 text-sm text-gray-600 leading-relaxed">
+              1. Тугмаи <strong>«Мубодила» (Share ⎋)</strong>-ро дар поёни браузери Safari пахш кунед.<br />
+              2. Ба поён фароед ва <strong>«Илова ба экрани асосӣ» (Add to Home Screen)</strong>-ро интихоб намоед.
+            </p>
+            <button
+              onClick={() => setShowIOSModal(false)}
+              className="mt-5 w-full rounded-xl bg-gray-100 py-2.5 text-sm font-bold text-gray-800 hover:bg-gray-200 transition"
+            >
+              Фаҳмо шуд
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
